@@ -1,0 +1,99 @@
+{% extends "base.html" %}{% block content %}
+<div class="row gy-3">
+  <div class="col-lg-8">
+    <div class="card shadow-sm"><div class="card-body">
+      <div class="d-flex justify-content-between align-items-center mb-2">
+        <div><h5 class="mb-0">Inspection Results</h5><div class="small text-muted">Target: {{ scan['url'] }}</div></div>
+        <div class="text-end"><div class="small text-muted">Risk</div><div class="fw-bold">{{ risk_pct }}%</div></div>
+      </div>
+      <div class="alert alert-secondary mt-3" role="alert">
+        <div class="d-flex justify-content-between">
+          <div>
+            <div class="mb-1"><strong>Risk Score:</strong> <span class="fw-bold">{{ risk_pct }}%</span></div>
+            <div><strong>Critical Probability:</strong> <span class="fw-bold">{{ crit_pct }}%</span></div>
+          </div>
+          <div class="text-end">
+            <div class="small text-muted">ML Model Output</div>
+          </div>
+        </div>
+      </div>
+      <div class="mb-3">
+        <div class="table-responsive">
+          <table class="table table-sm align-middle">
+            <thead><tr><th>#</th><th>Type</th><th class="w-50">URL</th><th class="d-none d-md-table-cell">Param</th><th>Advice</th><th>Fix</th></tr></thead>
+            <tbody id="findingsBody">
+              {% for f in findings %}
+              <tr>
+                <td>{{ loop.index }}</td>
+                <td><span class="badge bg-{{ f['severity_color'] }}">{{ f['type'] }}</span></td>
+                <td class="text-break link-cell"><a id="u{{ loop.index }}" href="{{ f['merged_url'] }}" target="_blank" class="btn btn-sm btn-outline-primary">Open</a></td>
+                <td class="d-none d-md-table-cell">{{ f.get('param','') }}</td>
+                <td>{{ f.get('advice', f.get('fix','')) }}</td>
+                <td>{{ f.get('fix','') }}</td>
+              </tr>
+              {% else %}<tr><td colspan="6" class="text-muted">No findings — site looks clean for XSS/HTML injection.</td></tr>{% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="d-flex gap-2">
+    <a class="btn btn-outline-light btn-sm" href="/report/{{ scan['id'] }}.pdf">Export PDF Report</a>
+        <a class="btn btn-outline-secondary btn-sm" id="exportCsv" href="/export/{{ scan['id'] }}.csv">Export CSV</a>
+        <a class="btn btn-outline-secondary btn-sm" id="exportJson" href="/export/{{ scan['id'] }}.json">Export JSON</a>
+        <button class="btn btn-outline-secondary btn-sm" id="toggleRawBtn" type="button">Show RAW URLs</button>
+        <form method="post" action="/delete_scan/{{ scan['id'] }}" class="ms-auto">
+          <button class="btn btn-outline-danger btn-sm" onclick="return confirm('Delete this inspection?')">Delete This Inspection</button>
+        </form>
+        <a class="btn btn-primary btn-sm" href="/">New Inspect</a>
+      </div>
+    </div></div>
+  </div>
+  <div class="col-lg-4">
+    <div class="card shadow-sm mb-3 p-3"><h6 class="mb-2">Vulnerability Types</h6><canvas id="donut"></canvas><ul id="vt-details" class="small mt-2 mb-0"></ul></div>
+    <div class="card shadow-sm p-3"><h6 class="mb-2">Severity</h6><canvas id="hist"></canvas><ul id="sev-details" class="small mt-2 mb-0"></ul></div>
+  </div>
+</div>
+<script>
+const donutLabels = {{ donut_labels|safe }};
+const donutValues = {{ donut_values|safe }};
+const histLabels = {{ hist_labels|safe }};
+const histValues = {{ hist_values|safe }};
+
+const donut = new Chart(document.getElementById('donut'), {
+  type:'doughnut',
+  data:{labels: donutLabels, datasets:[{data: donutValues}]},
+  options:{responsive:true, plugins:{legend:{position:'bottom'}, tooltip:{callbacks:{label:(ctx)=>`${ctx.label}: ${ctx.parsed}`}}}}
+});
+const hist = new Chart(document.getElementById('hist'), {
+  type:'bar',
+  data:{labels: histLabels, datasets:[{data: histValues}]},
+  options:{responsive:true, plugins:{legend:{display:false}, tooltip:{callbacks:{label:(ctx)=>`${ctx.label}: ${ctx.parsed}`}}}, scales:{y:{beginAtZero:true, ticks:{stepSize:1}}}}
+});
+(function(){ // details lists under charts
+  const vt = document.getElementById('vt-details');
+  if(vt){ vt.innerHTML = (donutLabels||[]).map((l,i)=>`<li>${l}: <strong>${donutValues[i]||0}</strong></li>`).join(''); }
+  const sv = document.getElementById('sev-details');
+  if(sv){ sv.innerHTML = (histLabels||[]).map((l,i)=>`<li>${l}: <strong>${histValues[i]||0}</strong></li>`).join(''); }
+})();
+// RAW toggle
+let RAW=false;
+async function applyRaw(raw){
+  RAW = !!raw;
+  try{
+    const r = await fetch('/results/{{ scan["id"] }}/raw_rows');
+    const j = await r.json();
+    const arr = RAW ? j.raw : j.masked;
+    for(let i=0;i<arr.length;i++){
+      const a = document.getElementById('u'+(i+1));
+      if(!a) continue;
+      a.href = arr[i] || '#';
+    }
+    const add = RAW ? '?raw=1' : '';
+    document.getElementById('exportCsv').href = '/export/{{ scan["id"] }}.csv'+add;
+    document.getElementById('exportJson').href = '/export/{{ scan["id"] }}.json'+add;
+    document.getElementById('toggleRawBtn').textContent = RAW ? 'Hide RAW URLs' : 'Show RAW URLs';
+  }catch(e){ console.error(e); }
+}
+document.getElementById('toggleRawBtn').addEventListener('click', ()=>applyRaw(!RAW));
+</script>
+{% endblock %}

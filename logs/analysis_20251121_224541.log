@@ -1,0 +1,15 @@
+2025-11-21 22:45:41,927 - analysis - INFO - === ML Training Results ===
+2025-11-21 22:45:41,928 - analysis - INFO - Dataset Size: 26 samples
+2025-11-21 22:45:41,928 - analysis - INFO - Class Balance: {'critical_1': 12, 'critical_0': 14}
+2025-11-21 22:45:41,928 - analysis - INFO - 
+Classification Metrics:
+2025-11-21 22:45:41,928 - analysis - INFO - Precision: 1.000
+2025-11-21 22:45:41,929 - analysis - INFO - Recall: 0.917
+2025-11-21 22:45:41,929 - analysis - INFO - F1 Score: 0.957
+2025-11-21 22:45:41,929 - analysis - INFO - 
+Regression Metrics:
+2025-11-21 22:45:41,930 - analysis - INFO - MAE: 0.0263
+2025-11-21 22:45:41,930 - analysis - INFO - R² Score: 0.9124
+2025-11-21 22:45:41,930 - analysis - INFO - 
+Feature Information:
+2025-11-21 22:45:41,931 - analysis - INFO - Total Features: 2132

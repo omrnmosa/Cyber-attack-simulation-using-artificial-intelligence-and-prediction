@@ -1,0 +1,32 @@
+2025-11-21 22:31:54,090 - analysis - INFO - 
+=== Ethics Policy Decision ===
+2025-11-21 22:31:54,090 - analysis - INFO - Target URL: http://testasp.vulnweb.com
+2025-11-21 22:31:54,090 - analysis - INFO - Decision: ALLOWED
+2025-11-21 22:31:54,091 - analysis - INFO - Reason: URL passed all checks
+2025-11-21 22:34:53,847 - analysis - INFO - === ML Training Results ===
+2025-11-21 22:34:53,848 - analysis - INFO - Dataset Size: 26 samples
+2025-11-21 22:34:53,848 - analysis - INFO - Class Balance: {'critical_1': 12, 'critical_0': 14}
+2025-11-21 22:34:53,848 - analysis - INFO - 
+Classification Metrics:
+2025-11-21 22:34:53,848 - analysis - INFO - Precision: 1.000
+2025-11-21 22:34:53,849 - analysis - INFO - Recall: 0.917
+2025-11-21 22:34:53,849 - analysis - INFO - F1 Score: 0.957
+2025-11-21 22:34:53,849 - analysis - INFO - 
+Regression Metrics:
+2025-11-21 22:34:53,849 - analysis - INFO - MAE: 0.0263
+2025-11-21 22:34:53,849 - analysis - INFO - R² Score: 0.9124
+2025-11-21 22:34:53,850 - analysis - INFO - 
+Feature Information:
+2025-11-21 22:34:53,850 - analysis - INFO - Total Features: 2132
+2025-11-21 22:34:53,936 - analysis - INFO - 
+=== Scan 1 Analysis ===
+2025-11-21 22:34:53,936 - analysis - INFO - Total Findings: 26
+2025-11-21 22:34:53,936 - analysis - INFO - Risk Score: 83.96%
+2025-11-21 22:34:53,936 - analysis - INFO - Critical Probability: 100.00%
+2025-11-21 22:34:53,937 - analysis - INFO - 
+Finding Types:
+2025-11-21 22:34:53,937 - analysis - INFO - - xss_reflected: 12
+2025-11-21 22:34:53,937 - analysis - INFO - - html_injection: 14
+2025-11-21 22:34:53,937 - analysis - INFO - 
+Severity Distribution:
+2025-11-21 22:34:53,937 - analysis - INFO - - unknown: 26

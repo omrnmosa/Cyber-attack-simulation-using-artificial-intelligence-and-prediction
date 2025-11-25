@@ -1,0 +1,22 @@
+{
+  "rows": 26,
+  "class_balance": {
+    "critical_1": 12,
+    "critical_0": 14
+  },
+  "metrics": {
+    "classification": {
+      "precision": 1.0,
+      "recall": 0.9166666666666666,
+      "f1": 0.9565217391304348,
+      "threshold": 0.5
+    },
+    "regression": {
+      "mae": 0.026282051282051952,
+      "r2": 0.9124090608465584
+    }
+  },
+  "artifacts": {
+    "char_features": 2132
+  }
+}

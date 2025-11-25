@@ -1,0 +1,25 @@
+# Core dependencies
+Flask>=3.0.0
+requests>=2.25.0
+beautifulsoup4>=4.12.0
+
+# ML & Analysis
+pandas>=2.2.0
+numpy>=1.26.0
+scikit-learn>=1.0.0
+joblib>=1.4.0
+
+# Verification (optional)
+selenium>=4.0.0
+
+# Type hints & security
+types-requests
+types-beautifulsoup4
+requests==2.32.3
+scikit-learn==1.5.1
+scikit-learn>=1.2
+# Optional for active verification of alerts/tag rendering:
+# selenium>=4.21
+
+
+reportlab>=3.6.0
